@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -79,14 +81,16 @@ WSGI_APPLICATION = 'Onlinefood.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv('DB_NAME'),
         "USER": os.getenv('DB_USER'),
         "PASSWORD": os.getenv('DB_PASSWORD'),
         "HOST": "localhost",
-        "PORT": 3306
+        "PORT": 5432
     }
 }
+
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Password validation
@@ -128,6 +132,10 @@ STATIC_ROOT = BASE_DIR /'static/'
 STATICFILES_DIRS = [
     'Onlinefood/static'
 ]
+
+# Media files configuration
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
